@@ -1,0 +1,2 @@
+# Kinal-App
+Proyecto individual
