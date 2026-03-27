@@ -12,7 +12,7 @@ public class ProductoController {
 
     private final ProductoRepository repo;
 
-    // Inyección por constructor
+
     public ProductoController(ProductoRepository repo) {
         this.repo = repo;
     }
@@ -29,8 +29,7 @@ public class ProductoController {
 
     @PutMapping
     public Producto actualizar(@RequestBody Producto producto) {
-        // En JPA, save() funciona para insertar (si el ID no existe)
-        // o actualizar (si el ID ya existe en la DB).
+
         return repo.save(producto);
     }
 }
