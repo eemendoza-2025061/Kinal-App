@@ -31,8 +31,4 @@ public class ClienteController {
     public Cliente actualizar(@RequestBody Cliente cliente){
         return repo.save(cliente);
     }
-
-
-
-
 }
