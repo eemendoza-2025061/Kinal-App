@@ -1,6 +1,7 @@
-package com.eliasmendoza.Kinalapp.repository;
+package com.eliasmendoza.Kinalapp.service;
 
 import com.eliasmendoza.Kinalapp.entity.Cliente;
+import com.eliasmendoza.Kinalapp.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +15,7 @@ import java.util.Optional;
 // transaccionales
 //Una transaccion es que puede o no ocurrir algo
 @Transactional
-public class ClienteService implements IClientesService{
+public class ClienteService implements IClientesService {
     /*private: solo accesible dentro de la clase
       ClienteRepository: Es el repositorio para acceder a la DB
       Inyeccion de Dependencias Spring nos da el repositorio

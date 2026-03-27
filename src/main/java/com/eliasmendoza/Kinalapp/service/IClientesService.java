@@ -1,4 +1,4 @@
-package com.eliasmendoza.Kinalapp.repository;
+package com.eliasmendoza.Kinalapp.service;
 
 import com.eliasmendoza.Kinalapp.entity.Cliente;
 
