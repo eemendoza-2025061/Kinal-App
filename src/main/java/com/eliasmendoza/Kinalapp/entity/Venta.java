@@ -28,7 +28,7 @@ public class Venta {
     @ManyToOne
     @JoinColumn(name = "Clientes_dpi_cliente")
     private Cliente cliente;
-    
+
     @ManyToOne
     @JoinColumn(name = "Usuarios_codigo_usuario")
     private Usuario usuario;
