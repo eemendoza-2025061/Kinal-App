@@ -31,7 +31,7 @@ public class ProductoService implements IProductoService {
             producto.setCodigoProducto(codigo);
             return productoRepository.save(producto);
         }
-        return null; // O podrías lanzar una excepción personalizada
+        return null;
     }
 
     @Override
