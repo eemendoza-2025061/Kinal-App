@@ -24,7 +24,7 @@ public class SecurityConfig {
                 )
 
                 .httpBasic(withDefaults());
-        
+
         http.headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
 
         return http.build();
