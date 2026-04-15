@@ -22,7 +22,6 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    // ========== REST API ==========
 
 
     @GetMapping
