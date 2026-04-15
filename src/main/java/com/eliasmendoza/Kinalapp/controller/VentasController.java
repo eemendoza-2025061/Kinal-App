@@ -30,7 +30,6 @@ public class VentasController {
         this.usuarioService  = usuarioService;
     }
 
-    // ========== REST API ==========
 
     @GetMapping
     @ResponseBody
