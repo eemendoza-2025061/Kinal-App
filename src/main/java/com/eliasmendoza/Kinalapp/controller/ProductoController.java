@@ -89,7 +89,7 @@ public class ProductoController {
         } catch (IllegalArgumentException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
-        return "redirect:/productos/web";  // Redirige a la lista después de guardar.
+        return "redirect:/productos/web"; 
     }
 
     @GetMapping("/web/editar/{codigo}")
