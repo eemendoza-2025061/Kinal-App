@@ -20,7 +20,7 @@ public class LoginController {
         this.usuarioService = usuarioService;
     }
 
-    @GetMapping("/login")  // Asocia este método a peticiones HTTP GET en la ruta /login
+    @GetMapping("/login") 
     public String mostrarLogin() {
         return "login";  // Spring buscará login.html en src/main/resources/templates/
     }
