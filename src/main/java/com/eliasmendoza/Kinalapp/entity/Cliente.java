@@ -3,7 +3,6 @@ package com.eliasmendoza.Kinalapp.entity;
 import jakarta.persistence.*;
 
 @Entity
-// @Entity le dice a Spring que esta clase representa una tabla en la BD
 @Table(name = "Clientes")
 // @Table define el nombre exacto de la tabla en la BD
 public class Cliente {
