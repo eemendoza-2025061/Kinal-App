@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Ventas - KinalApp</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="page-header">
+        <h2>💰 Ventas</h2>
+        <a th:href="@{/ventas/web/nuevo}" class="btn btn-primary">➕ Nueva Venta</a>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success">
+        <span>✅</span> <span th:text="${success}"></span>
+    </div>
+    <div th:if="${error}" class="alert alert-error">
+        <span>⚠️</span> <span th:text="${error}"></span>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th>Código</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Cliente (DPI)</th>
+                <th>Usuario</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="v : ${ventas}">
+                <td th:text="${v.codigoVenta}">-</td>
+                <td th:text="${v.fechaVenta}">-</td>
+                <td th:text="'Q ' + ${#numbers.formatDecimal(v.total, 1, 2)}">-</td>
+                <td th:text="${v.cliente != null ? v.cliente.dpiCliente : '-'}">-</td>
+                <td th:text="${v.usuario != null ? v.usuario.username : '-'}">-</td>
+                <td>
+                            <span class="badge" th:classappend="${v.estado == 1} ? 'badge-active' : 'badge-inactive'"
+                                  th:text="${v.estado == 1} ? 'Activo' : 'Inactivo'"></span>
+                </td>
+                <td class="table-actions">
+                    <a th:href="@{/ventas/web/editar/{codigo}(codigo=${v.codigoVenta})}" class="btn btn-warning">✏️ Editar</a>
+                    <a th:href="@{/ventas/web/eliminar/{codigo}(codigo=${v.codigoVenta})}" class="btn btn-danger" onclick="return confirm('¿Eliminar esta venta?')">🗑️ Eliminar</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(ventas)}">
+                <td colspan="7" style="text-align:center; padding: 40px; color: #64748b;">
+                    No hay ventas registradas
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+/* ============================================
+   RESPONSIVE DESIGN COMPLETO
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    :root {
+        --space-8: 40px;
+        --space-10: 48px;
+    }
+
+    .page-header h2 {
+        font-size: 2rem;
+    }
+
+    .menu-grid {
+        gap: var(--space-5);
+    }
+}
+
+/* Móviles grandes */
+@media (max-width: 768px) {
+    /* Navbar */
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: var(--space-3);
+    }
+
+    .navbar-brand {
+        margin-bottom: var(--space-2);
+    }
+
+    .navbar-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar-nav a {
+        padding: var(--space-2) var(--space-3);
+        font-size: 0.75rem;
+    }
+
+    /* Contenido */
+    .page-content {
+        padding: var(--space-4);
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+
+    .page-header h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Grids */
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+    }
+
+    /* Tablas */
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    /* Formularios */
+    .form-card {
+        padding: var(--space-5);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Botones */
+    .btn {
+        padding: var(--space-2) var(--space-4);
+        font-size: 0.75rem;
+    }
+
+    .table-actions {
+        flex-direction: column;
+    }
+
+    .table-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-icon {
+        font-size: 2.5rem;
+    }
+
+    .card-label {
+        font-size: 1rem;
+    }
+
+    .login-card,
+    .register-card {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    .logo-section img {
+        height: 50px;
+    }
+
+    .logo-section h1 {
+        font-size: 1.25rem;
+    }
+
+    .page-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .alert {
+        font-size: 0.75rem;
+    }
+}
+
+/* Landscape */
+@media (max-height: 600px) and (orientation: landscape) {
+    .login-page,
+    .register-page {
+        align-items: flex-start;
+        padding: var(--space-6);
+    }
+
+    .login-card,
+    .register-card {
+        padding: var(--space-5) var(--space-6);
+    }
+
+    .logo-section img {
+        height: 40px;
+    }
+
+    .logo-section h1 {
+        font-size: 1rem;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1600px) {
+    .page-content {
+        max-width: 1600px;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+/* Print */
+@media print {
+    .navbar,
+    .btn-logout,
+    .btn,
+    footer {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .card,
+    .table-wrapper {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
