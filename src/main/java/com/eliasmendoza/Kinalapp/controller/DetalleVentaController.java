@@ -29,6 +29,10 @@ public class DetalleVentaController {
         this.ventasService       = ventasService;
     }
 
+    /**
+     * @GetMapping sin ruta específica significa que responde a la raíz 
+     * definida en el @RequestMapping de la clase.
+     */
     @GetMapping
     @ResponseBody
     public ResponseEntity<List<DetalleVenta>> listarRest() {
