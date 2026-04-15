@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping("/registro")  // Ruta base: /registro
+@RequestMapping("/registro") 
 public class RegistroController {
 
     private final IUsuarioService usuarioService;
