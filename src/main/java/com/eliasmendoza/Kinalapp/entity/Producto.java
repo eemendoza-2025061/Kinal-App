@@ -13,7 +13,7 @@ public class Producto {
             pkColumnName = "sequence_name", valueColumnName = "next_val",
             pkColumnValue = "producto_id", allocationSize = 1)
     @Column(name = "codigo_producto", nullable = false, columnDefinition = "INT")
-    private Long codigoProducto;  // ID único del producto
+    private Long codigoProducto; 
 
     @Column(name = "nombre_producto", length = 60, nullable = false)
     private String nombreProducto;  // Nombre del producto
