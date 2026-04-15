@@ -12,7 +12,7 @@ public class Usuario {
             pkColumnName = "sequence_name", valueColumnName = "next_val",
             pkColumnValue = "usuario_id", allocationSize = 1)
     @Column(name = "codigo_usuario", nullable = false, columnDefinition = "INT")
-    private Long codigoUsuario;  // Identificador del usuario
+    private Long codigoUsuario;
 
     @Column(length = 45, nullable = false)
     private String username;  // Nombre de usuario para login
