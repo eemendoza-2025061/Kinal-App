@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity  // Indica que esta clase es una entidad JPA (se mapea a una tabla)
-@Table(name = "DetalleVenta")  // Nombre de la tabla en la base de datos
+@Table(name = "DetalleVenta") 
 public class DetalleVenta {
 
     @Id  // Clave primaria
