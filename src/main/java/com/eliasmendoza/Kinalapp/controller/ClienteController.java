@@ -12,7 +12,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/* * @GetMapping sin ruta adicional significa que responde a la ruta base "/clientes".
+     * Si quisieras que fuera "/clientes/web", deberías poner @GetMapping("/web").
+     */
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
