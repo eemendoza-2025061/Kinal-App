@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title>Productos - KinalApp</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="page-header">
+        <h2>📦 Productos</h2>
+        <a th:href="@{/productos/web/nuevo}" class="btn btn-primary">➕ Nuevo Producto</a>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success">
+        <span>✅</span> <span th:text="${success}"></span>
+    </div>
+    <div th:if="${error}" class="alert alert-error">
+        <span>⚠️</span> <span th:text="${error}"></span>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre Producto</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${productos}">
+                <td th:text="${p.codigoProducto}">-</td>
+                <td th:text="${p.nombreProducto}">-</td>
+                <td th:text="'Q ' + ${#numbers.formatDecimal(p.precio, 1, 2)}">-</td>
+                <td th:text="${p.stock}">-</td>
+                <td>
+                            <span class="badge" th:classappend="${p.estado == 1} ? 'badge-active' : 'badge-inactive'"
+                                  th:text="${p.estado == 1} ? 'Activo' : 'Inactivo'"></span>
+                </td>
+                <td class="table-actions">
+                    <a th:href="@{/productos/web/editar/{codigo}(codigo=${p.codigoProducto})}" class="btn btn-warning">✏️ Editar</a>
+                    <a th:href="@{/productos/web/eliminar/{codigo}(codigo=${p.codigoProducto})}" class="btn btn-danger" onclick="return confirm('¿Eliminar este producto?')">🗑️ Eliminar</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(productos)}">
+                <td colspan="6" style="text-align:center; padding: 40px; color: #64748b;">
+                    No hay productos registrados
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

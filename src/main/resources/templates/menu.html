@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - KinalApp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/menu.css">
+</head>
+<body>
+<nav class="navbar">
+    <a class="navbar-brand" th:href="@{/web/menu}">
+        <img src="/css/logo.png" alt="KinalApp Logo">
+        <span>KinalApp</span>
+    </a>
+    <ul class="navbar-nav">
+        <li><a th:href="@{/web/menu}" class="nav-active">Inicio</a></li>
+        <li><a th:href="@{/clientes/web}">Clientes</a></li>
+        <li><a th:href="@{/productos/web}">Productos</a></li>
+        <li><a th:href="@{/usuarios/web}">Usuarios</a></li>
+        <li><a th:href="@{/ventas/web}">Ventas</a></li>
+        <li><a th:href="@{/detalleventa/web}">Det. Ventas</a></li>
+    </ul>
+    <div>
+        <a th:href="@{/logout}" class="btn-logout">Salir</a>
+    </div>
+</nav>
+
+<div class="page-content">
+    <div class="page-header">
+        <h2> Panel Principal</h2>
+        <p>Bienvenido a KinalApp. Selecciona un módulo para comenzar.</p>
+    </div>
+
+    <div class="menu-grid">
+        <a class="menu-card" th:href="@{/clientes/web}">
+            <span class="card-label">Clientes</span>
+            <span class="card-desc">Gestionar clientes</span>
+        </a>
+        <a class="menu-card" th:href="@{/productos/web}">
+            <span class="card-label">Productos</span>
+            <span class="card-desc">Gestionar productos</span>
+        </a>
+        <a class="menu-card" th:href="@{/usuarios/web}">
+            <span class="card-label">Usuarios</span>
+            <span class="card-desc">Gestionar usuarios</span>
+        </a>
+        <a class="menu-card" th:href="@{/ventas/web}">
+            <span class="card-label">Ventas</span>
+            <span class="card-desc">Registrar ventas</span>
+        </a>
+        <a class="menu-card" th:href="@{/detalleventa/web}">
+            <span class="card-label">Detalle Ventas</span>
+            <span class="card-desc">Ver detalles</span>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 KinalApp — Sistema de Ventas</p>
+</footer>
+</body>
+</html>
