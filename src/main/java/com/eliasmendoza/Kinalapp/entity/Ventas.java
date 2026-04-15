@@ -17,7 +17,7 @@ public class Ventas {
             pkColumnName = "sequence_name", valueColumnName = "next_val",
             pkColumnValue = "venta_id", allocationSize = 1)
     @Column(name = "codigo_venta", nullable = false, columnDefinition = "INT")
-    private Long codigoVenta;  // Número único de venta
+    private Long codigoVenta;
 
     @Column(name = "fecha_venta", nullable = false)
     private LocalDate fechaVenta;  // Fecha en que se realizó la venta
