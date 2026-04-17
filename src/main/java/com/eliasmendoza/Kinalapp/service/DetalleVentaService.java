@@ -29,7 +29,7 @@ public class DetalleVentaService implements IDetalleVentaService {
     public DetalleVenta guardar(DetalleVenta detalleVenta) {
         validarDetalleVenta(detalleVenta);
         if (detalleVenta.getEstado() == null) {
-            detalleVenta.setEstado(1L);  // Estado activo por defecto
+            detalleVenta.setEstado(1L);
         }
         // Si el subtotal no fue enviado, se calcula automáticamente
         if (detalleVenta.getSubtotal() == null && detalleVenta.getCantidad() > 0 && detalleVenta.getPrecioUnitario() != null) {
