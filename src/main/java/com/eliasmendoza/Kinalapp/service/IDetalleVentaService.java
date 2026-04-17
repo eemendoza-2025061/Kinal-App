@@ -24,6 +24,6 @@ public interface IDetalleVentaService {
     boolean existePorCodigo(Long codigo);
 
     // Métodos de consulta específicos
-    List<DetalleVenta> buscarPorVenta(Long codigoVenta);      // Todos los detalles de una venta
+    List<DetalleVenta> buscarPorVenta(Long codigoVenta);     
     List<DetalleVenta> buscarPorProducto(Long codigoProducto); // Todos los detalles que incluyen un producto
 }
