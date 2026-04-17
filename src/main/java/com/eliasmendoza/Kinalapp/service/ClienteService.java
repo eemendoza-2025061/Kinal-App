@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Service  // Registra esta clase como un bean de servicio en Spring
+@Service  
 @Transactional  // Todas las operaciones de escritura se ejecutan dentro de una transacción
 public class ClienteService implements IClienteService {
 
