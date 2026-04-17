@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface IProductoService {
 
+    // 
     @Transactional(readOnly = true)
     List<Producto> listarTodos();
 
