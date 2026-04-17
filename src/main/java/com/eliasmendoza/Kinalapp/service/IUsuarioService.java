@@ -26,7 +26,6 @@ public interface IUsuarioService {
     @Transactional(readOnly = true)
     Optional<Usuario> login(String username, String password);
 
-    // Validación de unicidad para registro
     @Transactional(readOnly = true)
     boolean existeUsername(String username);
 
