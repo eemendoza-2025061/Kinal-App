@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public interface IClienteService {
 
-    // readOnly = true: solo lectura, no bloquea la base de datos para escritura, mejora rendimiento
     @Transactional(readOnly = true)
     List<Cliente> listarTodos();  // Recupera todos los clientes de la base de datos
 
