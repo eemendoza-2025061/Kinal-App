@@ -23,7 +23,6 @@ public interface IUsuarioService {
 
     boolean existePorCodigo(Long codigo);
 
-    // Autenticación: busca por username y verifica password
     @Transactional(readOnly = true)
     Optional<Usuario> login(String username, String password);
 
