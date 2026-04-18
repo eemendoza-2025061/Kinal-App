@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-// La anotación @Service le indica a Spring que esta clase es un componente de servicio,
-// es decir, contiene la lógica de negocio. Spring la registrará en su contexto como un bean.
 @Service
 
 // @Transactional aplica a todos los métodos públicos de la clase.
