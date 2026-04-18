@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class ProductoService implements IProductoService {
 
     private final ProductoRepository productoRepository;
-    private final DetalleVentaRepository detalleVentaRepository;  // Para verificar dependencias
+    private final DetalleVentaRepository detalleVentaRepository; 
 
     public ProductoService(ProductoRepository productoRepository, DetalleVentaRepository detalleVentaRepository) {
         this.productoRepository = productoRepository;
