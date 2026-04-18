@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IUsuarioService {
-
+//
     @Transactional(readOnly = true)
     List<Usuario> listarTodos();
 
@@ -23,11 +23,9 @@ public interface IUsuarioService {
 
     boolean existePorCodigo(Long codigo);
 
-    // Autenticación: busca por username y verifica password
     @Transactional(readOnly = true)
     Optional<Usuario> login(String username, String password);
 
-    // Validación de unicidad para registro
     @Transactional(readOnly = true)
     boolean existeUsername(String username);
 

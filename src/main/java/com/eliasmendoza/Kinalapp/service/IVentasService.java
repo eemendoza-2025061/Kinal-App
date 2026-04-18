@@ -6,13 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IVentasService {
-    // Interface: Es un contrato que dice QUÉ métodos debe tener
-    // cualquier servicio de Ventas, no tiene
-    // implementación, solo la definición de los métodos
 
-    /*
-     * readOnly = true: Lo que hace es optimizar la consulta no bloquea la BD
-     */
     @Transactional(readOnly = true)
     List<Ventas> listarTodos();
     // List<Ventas> lo que hace es devolver una lista de objetos de la entidad Ventas
