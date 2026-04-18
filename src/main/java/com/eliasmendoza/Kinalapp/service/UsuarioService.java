@@ -87,7 +87,6 @@ public class UsuarioService implements IUsuarioService {
     public Optional<Usuario> login(String username, String password) {
         // Busca lista de usuarios con ese username (puede haber duplicados por error, se previene)
         List<Usuario> usuarios = usuarioRepository.findByUsername(username);
-        // Filtra por coincidencia de contraseña y toma el primero
         return usuarios.stream()
                 .filter(u -> u.getPassword().equals(password))
                 .findFirst();
