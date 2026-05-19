@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas - KinalApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #0f172a; /* Slate 900 */
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #1e293b !important; /* Slate 800 */
+            border-bottom: 1px solid #334155;
+            padding: 1.25rem 0 !important;
+        }
+        .main-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 2.5rem !important; /* Relleno generoso */
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        /* Alerta informativa personalizada */
+        .info-banner {
+            background-color: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            color: #38bdf8;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+        }
+        /* Estilos de la Tabla SaaS */
+        .table-responsive {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .table {
+            margin-bottom: 0;
+            color: #cbd5e1;
+            vertical-align: middle;
+        }
+        .table th {
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            padding: 1.25rem 1.5rem !important;
+            border-bottom: 2px solid #334155 !important;
+        }
+        .table td {
+            padding: 1.25rem 1.5rem !important; /* Más relleno en celdas */
+            background-color: #1e293b !important;
+            border-bottom: 1px solid #334155 !important;
+            color: #e2e8f0;
+        }
+        .table-hover tbody tr:hover td {
+            background-color: #24334d !important; /* Hover sutil */
+            color: #ffffff;
+        }
+        /* Botones y Badges personalizados */
+        .btn-custom {
+            border-radius: 10px;
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn-action {
+            padding: 0.4rem 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: none;
+        }
+        .btn-action-view {
+            background-color: rgba(14, 165, 233, 0.15);
+            color: #38bdf8;
+            text-decoration: none;
+        }
+        .btn-action-view:hover {
+            background-color: #0ea5e9;
+            color: #ffffff;
+        }
+        .btn-action-disabled {
+            background-color: rgba(239, 68, 68, 0.08);
+            color: #f87171;
+            opacity: 0.6;
+        }
+        .btn-action-disabled:hover {
+            background-color: rgba(239, 68, 68, 0.2);
+            opacity: 1;
+        }
+        .badge-custom {
+            padding: 0.5rem 0.75rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-white d-flex align-items-center" href="/menu">
+            <span class="me-2">🏠</span> KinalApp
+        </a>
+        <div class="navbar-nav ms-auto align-items-center">
+            <span class="navbar-text me-4 text-light fw-medium">
+                👤 <span th:text="${usuario.username}"></span>
+            </span>
+            <form th:action="@{/logout}" method="post" class="d-inline">
+                <button type="submit" class="btn btn-outline-danger btn-sm px-3 rounded-pill">Salir</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+
+    <div class="main-card">
+
+        <div class="mb-4">
+            <h2 class="fw-bold text-white m-0">
+                <i class="bi bi-cart-fill text-info me-2"></i> Historial de Ventas
+            </h2>
+            <p class="text-secondary small m-0 mt-1">Registro de transacciones comerciales procesadas en la plataforma</p>
+        </div>
+
+        <div th:if="${mensaje}" class="alert alert-success bg-success-subtle text-success border-0 alert-dismissible fade show p-3 rounded-3 mb-4 small" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i> <span th:text="${mensaje}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <div th:if="${error}" class="alert alert-danger bg-danger-subtle text-danger border-0 alert-dismissible fade show p-3 rounded-3 mb-4 small" role="alert">
+            <i class="bi bi-x-circle-fill me-2"></i> <span th:text="${error}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="info-banner d-flex align-items-center gap-2 mb-4 small">
+            <i class="bi bi-info-circle-fill fs-5"></i>
+            <span>Las ventas son de solo lectura. No se pueden modificar ni eliminar por auditoría de stock.</span>
+        </div>
+
+        <div class="table-responsive shadow-sm">
+            <table class="table table-hover align-middle">
+                <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Vendedor</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="venta : ${ventas}">
+                    <td class="fw-medium text-white" th:text="${venta.codigoVenta}"></td>
+                    <td class="text-white-50" th:text="${#temporals.format(venta.fechaVenta, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${venta.cliente.nombreCliente + ' ' + venta.cliente.apellidoCliente}"></td>
+                    <td class="text-secondary" th:text="${venta.usuario.username}"></td>
+                    <td class="fw-bold text-info-subtle" th:text="${'Q ' + #numbers.formatDecimal(venta.total, 1, 2)}"></td>
+                    <td>
+                        <span th:if="${venta.estado == 1}" class="badge badge-custom bg-success-subtle text-success">
+                            <i class="bi bi-check-circle-fill me-1" style="font-size: 0.7rem;"></i> Completada
+                        </span>
+                        <span th:if="${venta.estado == 0}" class="badge badge-custom bg-danger-subtle text-danger">
+                            <i class="bi bi-x-circle-fill me-1" style="font-size: 0.7rem;"></i> Anulada
+                        </span>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a th:href="@{/web/ventas/ver/{codigo}(codigo=${venta.codigoVenta})}"
+                               class="btn-action btn-action-view gap-1">
+                                <i class="bi bi-eye-fill"></i> Ver
+                            </a>
+                            <button class="btn-action btn-action-disabled gap-1"
+                                    onclick="mostrarMensajeNoDisponible()">
+                                <i class="bi bi-trash3-fill"></i> Eliminar
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4 pt-2">
+            <a href="/menu" class="btn btn-outline-secondary btn-custom d-inline-flex align-items-center gap-2" style="border-color: #334155; color: #cbd5e1;">
+                <i class="bi bi-arrow-left fs-5"></i> Volver al menú
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function mostrarMensajeNoDisponible() {
+        alert('⛔ BOTÓN NO DISPONIBLE\n\nLas ventas no se pueden eliminar por políticas del sistema.');
+    }
+</script>
+</body>
+</html>

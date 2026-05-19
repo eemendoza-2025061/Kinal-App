@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KinalApp - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #0f172a; /* Slate 900 (Mismo del Dashboard) */
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+        }
+        .login-container {
+            min-height: 100vh;
+        }
+        /* Panel Izquierdo: Bienvenida Visual */
+        .brand-panel {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-right: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem !important;
+        }
+        /* Panel Derecho: Formulario con mucho aire/relleno */
+        .form-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 3.5rem !important; /* Relleno generoso */
+            background-color: #0f172a;
+        }
+        .login-form-wrapper {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .form-control {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: #ffffff;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+        }
+        .form-control:focus {
+            background-color: #1e293b;
+            border-color: #6366f1;
+            color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+        }
+        .form-label {
+            color: #cbd5e1;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .btn-custom {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-primary-custom {
+            background-color: #6366f1;
+            border: none;
+            color: white;
+        }
+        .btn-primary-custom:hover {
+            background-color: #4f46e5;
+        }
+        .btn-outline-custom {
+            border: 1px solid #334155;
+            color: #cbd5e1;
+            background-color: transparent;
+        }
+        .btn-outline-custom:hover {
+            background-color: #1e293b;
+            color: #ffffff;
+            border-color: #475569;
+        }
+        .brand-icon-box {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(99, 102, 241, 0.15);
+            color: #6366f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+        }
+        hr {
+            border-top: 1px solid #334155;
+            opacity: 1;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid p-0">
+    <div class="row g-0 login-container">
+
+        <div class="col-lg-6 d-none d-lg-flex brand-panel text-center">
+            <div class="brand-icon-box shadow-lg">
+                <i class="bi bi-lock-fill fs-1"></i>
+            </div>
+            <h1 class="display-4 fw-bold text-white mb-3">KinalApp</h1>
+        </div>
+
+        <div class="col-12 col-lg-6 form-panel">
+            <div class="login-form-wrapper">
+
+                <div class="mb-4 d-lg-none text-center">
+                    <h2 class="fw-bold text-white mb-1">KinalApp</h2>
+                    <p class="text-secondary small">Gestión institucional</p>
+                </div>
+
+                <div class="mb-4">
+                    <h2 class="fw-bold text-white m-0">Bienvenido de nuevo</h2>
+                    <p class="text-secondary small">Por favor, introduce tus credenciales para ingresar</p>
+                </div>
+
+                <div th:if="${param.error}" class="alert alert-danger bg-danger-subtle text-danger border-0 p-3 mb-4 rounded-3 small">
+                    <i class="bi bi-x-circle-fill me-2"></i> Usuario o contraseña incorrectos
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success bg-success-subtle text-success border-0 p-3 mb-4 rounded-3 small">
+                    <i class="bi bi-check-circle-fill me-2"></i> Has cerrado sesión correctamente
+                </div>
+                <div th:if="${mensaje}" class="alert alert-success bg-success-subtle text-success border-0 p-3 mb-4 rounded-3 small" th:text="${mensaje}"></div>
+
+                <form th:action="@{/login}" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Tu usuario" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary-custom btn-custom w-100 d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-box-arrow-in-right fs-5"></i> Iniciar Sesión
+                    </button>
+                </form>
+
+                <hr>
+
+                <div class="text-center">
+                    <p class="text-secondary small mb-3">¿No tienes una cuenta activa todavía?</p>
+                    <a href="/registro" class="btn btn-outline-custom btn-custom w-100 d-flex align-items-center justify-content-center gap-2">
+                        <i class="bi bi-person-plus fs-5"></i> Solicitar una Cuenta
+                    </a>
+                </div>
+
+                <div class="text-center text-secondary mt-5 pt-3">
+                    <small style="font-size: 0.75rem; color: #475569;">© 2026 Fundación Kinal · Todos los derechos reservados</small>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
